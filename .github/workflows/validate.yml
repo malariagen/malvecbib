@@ -19,4 +19,4 @@ jobs:
       run: sudo apt install biber
       
     - name: Validate bibliography
-      run: biber --tool -V refs.bib
+      run: biber --tool --validate-datamodel --dieondatamodel refs.bib
