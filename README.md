@@ -11,8 +11,10 @@ If adding new entries, please observe the following conventions:
 
   2. Insert new entries in alphabetical order by entry key.
 
-  3. It is suggested to remove abstract fields to keep the file more
-     compact.
+  3. It is suggested to remove the abstract field to keep the file
+     more compact.
+
+  4. Please use abbreviated journal titles.
 
 You can validate the file locally with biber by running:
 
