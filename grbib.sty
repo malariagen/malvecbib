@@ -21,6 +21,7 @@
 
 \renewcommand*{\nameyeardelim}{\addspace}
 
+
 % General customizations
 
 \DeclareNameAlias{sortname}{family-given}  % Last-1st name order in the bibliography
@@ -34,9 +35,6 @@
 		\newunit}
 }%
 
-\DeclareBibliographyDriver{book}{%
-	\printnames{author}%
-\finentry}
 
 % Customization for article
 
@@ -63,27 +61,18 @@
 		\printfield{doi}}{}
 }
 
+
 % Customization for book
 
 \DeclareBibliographyDriver{book}{%
 	\printnames{author}%
 	\newunit%
 	\usebibmacro{date+extradate}%
-	\usebibmacro{chaptertitle+booktitle}%
-	\newunit
-	\ifnameundef{editor}{}{\printtext[parens]{\usebibmacro{byeditor+others}}}  % Print (editors)
-	\newunit
-	\usebibmacro{chapter+pages}%
-	\newunit
+        \printfield{title}%
+	\newunit%
+        \iffieldundef{edition}{}{\printfield{edition}\newunit}%
 	\usebibmacro{publisher+location}%
 \usebibmacro{finentry}}
-
-\DeclareFieldFormat[book]{booktitle}{\mkbibemph{#1}} % italic journal title
-\newbibmacro{chaptertitle+booktitle}{%
-	\iffieldundef{title}
-	{\printfield{booktitle}}
-	{\printfield{title}\newunit\bibstring{in}\addspace\printfield{booktitle}}
-}
 
 \newbibmacro*{publisher+location}{%
 	\printlist{publisher}
@@ -93,7 +82,28 @@
 	\newunit
 }
 
-% Alias inbook -> book
 
-\DeclareBibliographyAlias{inbook}{book}
+% Customization for inbook and incollection
 
+\DeclareBibliographyDriver{inbook}{%
+	\printnames{author}%
+	\newunit%
+	\usebibmacro{date+extradate}%
+	\usebibmacro{chaptertitle+booktitle}%
+        \newunit%
+        \iffieldundef{edition}{}{\printfield{edition}\newunit}%
+	\iffieldundef{editor}{}{\printtext[parens]{\usebibmacro{byeditor+others}}}  % Print (editors)
+	\newunit%
+	\usebibmacro{chapter+pages}%
+	\newunit%
+	\usebibmacro{publisher+location}%
+\usebibmacro{finentry}}
+
+\DeclareFieldFormat[inbook]{booktitle}{\mkbibemph{#1}} % italic book title
+\newbibmacro{chaptertitle+booktitle}{%
+	\iffieldundef{title}
+	{\printfield{booktitle}}
+	{\printfield{title}\newunit\bibstring{in}\addspace\printfield{booktitle}}
+}
+
+\DeclareBibliographyAlias{incollection}{inbook}
