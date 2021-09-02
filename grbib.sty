@@ -52,8 +52,8 @@
 \usebibmacro{finentry}}
 
 \DeclareFieldFormat[article]{journaltitle}{\mkbibemph{#1}} % italic journal title
-\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}\addcolon\addspace} % italic journal title
-\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{pages}{\addcolon\addspace#1}
 
 \newbibmacro*{doi}{%
 	\iffieldequalstr{journaltitle}{BioRxiv}{ % Check if the journal is "BioRxiv"
