@@ -91,7 +91,7 @@
 	\usebibmacro{date+extradate}%
 	\usebibmacro{chaptertitle+booktitle}%
         \newunit%
-        \iffieldundef{edition}{}{\printfield{edition}\newunit}%
+        \iffieldundef{edition}{}{\printfield{edition} edition\newunit}%
 	\iffieldundef{editor}{}{\printtext[parens]{\usebibmacro{byeditor+others}}}  % Print (editors)
 	\newunit%
 	\usebibmacro{chapter+pages}%
