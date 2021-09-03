@@ -45,20 +45,20 @@
 	\printfield{title}\printfield{titleaddon}%
 	\newunit%
 	\printfield{journaltitle}%
-	\newunit%
 	\printfield{volume}%
 	\printfield{pages}%
+	\newunit%
 	\usebibmacro{doi}
 \usebibmacro{finentry}}
 
 \DeclareFieldFormat[article]{journaltitle}{\mkbibemph{#1}} % italic journal title
-\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}\addcolon\addspace} % italic journal title
-\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[article]{volume}{\addspace\mkbibbold{#1}}
+\DeclareFieldFormat[article]{pages}{\addcolon\addspace#1}
 
 \newbibmacro*{doi}{%
-	\iffieldequalstr{journaltitle}{BioRxiv}{ % Check if the journal is "BioRxiv"
-		\newunit
-		\printfield{doi}}{}
+	\iffieldundef{doi}
+	{}
+	{\printfield{doi}}
 }
 
 
@@ -70,7 +70,7 @@
 	\usebibmacro{date+extradate}%
         \printfield{title}%
 	\newunit%
-        \iffieldundef{edition}{}{\printfield{edition}\newunit}%
+        \iffieldundef{edition}{}{\printfield{edition} Edition\newunit}%
 	\usebibmacro{publisher+location}%
 \usebibmacro{finentry}}
 
@@ -91,7 +91,7 @@
 	\usebibmacro{date+extradate}%
 	\usebibmacro{chaptertitle+booktitle}%
         \newunit%
-        \iffieldundef{edition}{}{\printfield{edition}\newunit}%
+        \iffieldundef{edition}{}{\printfield{edition} Edition\newunit}%
 	\iffieldundef{editor}{}{\printtext[parens]{\usebibmacro{byeditor+others}}}  % Print (editors)
 	\newunit%
 	\usebibmacro{chapter+pages}%
