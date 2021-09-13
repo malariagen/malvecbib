@@ -17,8 +17,8 @@ jobs:
 
     - name: Install biber
       run: |
-	sudo apt update 
-	sudo apt install biber
+        sudo apt update 
+        sudo apt install biber
       
     - name: Validate bibliography
       run: biber --tool --validate-datamodel --dieondatamodel refs.bib
