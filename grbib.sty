@@ -68,9 +68,10 @@
 	\printnames{author}%
 	\newunit%
 	\usebibmacro{date+extradate}%
-        \printfield{title}%
+    \printfield{title}%
 	\newunit%
-        \iffieldundef{edition}{}{\printfield{edition} Edition\newunit}%
+    \iffieldundef{edition}{}{\printfield{edition}}%
+	\newunit%
 	\usebibmacro{publisher+location}%
 \usebibmacro{finentry}}
 
@@ -90,9 +91,9 @@
 	\newunit%
 	\usebibmacro{date+extradate}%
 	\usebibmacro{chaptertitle+booktitle}%
-        \newunit%
-        \iffieldundef{edition}{}{\printfield{edition} Edition\newunit}%
-	\iffieldundef{editor}{}{\printtext[parens]{\usebibmacro{byeditor+others}}}  % Print (editors)
+    \newunit%
+    \iffieldundef{edition}{}{\printfield{edition}}%
+	\iffieldundef{editor}{}{\printtext[parens]{\usebibmacro{byeditor+others}}}%
 	\newunit%
 	\usebibmacro{chapter+pages}%
 	\newunit%
